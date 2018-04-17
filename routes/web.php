@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return 'oo';
 });
 
 Route::any('/wechat', 'WeChatController@serve');
@@ -21,6 +21,21 @@ Route::any('/wechat', 'WeChatController@serve');
 Route::get('login', 'LoginController@loginView')->name('login');
 Route::post('login', 'LoginController@login')->name('login');
 
-Route::group(['namespace' => 'Admin'], function (){
+
+Route::group(['namespace' => 'Admin', 'middleware'=>'auth'], function (){
     Route::get('dashboard', 'AdminController@dashboardView')->name('dashboard');
+    Route::post('logout', 'AdminController@logout')->name('logout');
 });
+
+//微信视图
+Route::group(['namespace' => 'Weixin', 'prefix' => 'weixin'], function (){
+
+    Route::get('/training', 'PagesController@trainingView')->name('pages.training');
+    //互动
+    Route::get('/interaction', 'PagesController@interactionView')->name('pages.interaction');
+    //考勤
+    Route::get('/punchcard', 'PagesController@punchcardView')->name('pages.punchcard');
+
+});
+
+

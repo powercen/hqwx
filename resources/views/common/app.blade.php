@@ -10,7 +10,7 @@
 </head>
 <body>
 <div id="app" class="{{ route_name() }}">
-
+    @yield('content')
 </div>
 <script src="{{ asset('js/app.js') }}"></script>
 </body>

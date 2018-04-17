@@ -15,18 +15,19 @@ class WeChatController extends Controller
         Log::info('request arrived.');
         $app = app('wechat.official_account');
         $app->server->push(function ($message){
-            switch ($message->MsgType){
+            switch ($message['MsgType']){
                 case 'event':
                     //关注消息，新用户关注进入公众号
-                    if($message->Event === 'subscribe'){
+                    if($message['Event'] == 'subscribe'){
                         return new Text('你好，欢迎来到华庆作业区');
                     }
-                    break;
+                    return 'Success';
+                case 'text':
+                    return new Text('hahaa，你输入了' . $message['Content']);
                 default:
-                    break;
+                    return 'Success';
             }
 
-            return '这是回复消息';
         });
 
         return $app->server->serve();

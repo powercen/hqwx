@@ -16,3 +16,11 @@ Route::get('/', function () {
 });
 
 Route::any('/wechat', 'WeChatController@serve');
+
+//登陆页面
+Route::get('login', 'LoginController@loginView')->name('login');
+Route::post('login', 'LoginController@login')->name('login');
+
+Route::group(['namespace' => 'Admin'], function (){
+    Route::get('dashboard', 'AdminController@dashboardView')->name('dashboard');
+});

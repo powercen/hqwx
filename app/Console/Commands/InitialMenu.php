@@ -46,7 +46,7 @@ class InitialMenu extends Command
         $buttons = [
             [
                 'type' => 'view',
-                'name' => '培训首页',
+                'name' => '培训首页@',
                 'url' => route('pages.training')
             ],
             [

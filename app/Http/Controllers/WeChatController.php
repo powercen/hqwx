@@ -23,7 +23,7 @@ class WeChatController extends Controller
                     }
                     return 'Success';
                 case 'text':
-                    return new Text('hahaa，你输入了' . $message['Content']);
+                    return new Text('hahaa，你输入了' . route('pages.training'));
                 default:
                     return 'Success';
             }

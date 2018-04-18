@@ -10388,9 +10388,55 @@ a.text-dark:focus {
   }
 }
 
+body,
+html {
+  height: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+#app {
+  height: 100%;
+  position: relative;
+}
+
+#app .weui-tab {
+  position: static;
+  height: auto;
+}
+
 .navbar-laravel {
   background-color: #fff;
   -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
           box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.pages-training .weui-grid__icon {
+  width: 40px;
+  height: 40px;
+}
+
+.pages-training .weui-footer,
+.pages-training .weui-grid__label {
+  font-size: 14px;
+}
+
+.pages-training .weui-grid__icon + .weui-grid__label {
+  margin-bottom: 0;
+}
+
+.weui-tabbar__label {
+  margin-bottom: 0;
+}
+
+.router-link-active .weui-tabbar__label {
+  color: #007bff;
 }
 

@@ -2,12 +2,25 @@ import VueRouter from 'vue-router'
 
 let routes = [
     {
-        path:'/',
-        component:require('./components/training/index')
+        path:'/weixin/home',
+        name: 'home',
+        component:require('./components/training/Index')
+    },
+    {
+        path:'/weixin/interaction',
+        name: 'interaction',
+        component:require('./components/interaction/Index')
+    },
+    {
+        path:'/weixin/punchcard',
+        name: 'punchcard',
+        component:require('./components/punchcard/Index')
     }
+
 ];
 
 
 export default new VueRouter({
+    mode: 'history',
     routes
 })

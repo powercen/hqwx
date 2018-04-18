@@ -30,7 +30,7 @@ Route::group(['namespace' => 'Admin', 'middleware'=>'auth'], function (){
 //微信视图
 Route::group(['namespace' => 'Weixin', 'prefix' => 'weixin'], function (){
 
-    Route::get('/training', 'PagesController@trainingView')->name('pages.training');
+    Route::any('{all}', 'PagesController@trainingView')->name('pages.training');
     //互动
     Route::get('/interaction', 'PagesController@interactionView')->name('pages.interaction');
     //考勤

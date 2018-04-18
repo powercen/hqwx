@@ -23,7 +23,7 @@ class WeChatController extends Controller
                     }
                     return 'Success';
                 case 'text':
-                    return new Text('hahaa，你输入了' . route('pages.training'));
+                    return new Text('入口路由为：' . route('pages.training', 'home'));
                 default:
                     return 'Success';
             }

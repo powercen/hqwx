@@ -1,6 +1,8 @@
 <template>
     <div class="weui-grids">
-        <router-link class="weui-grid" v-for="item in items" :to="{name: 'training.list', params: {id: item.tagid}}">
+        <router-link class="weui-grid" v-for="item in items"
+                     :to="{name: 'trainingList', params: {id: item.tagid} }"
+                     :key="item.tagid">
             <div class="weui-grid__icon">
                 <img src="/icon/training.png">
             </div>

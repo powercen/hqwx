@@ -16606,7 +16606,7 @@ if (inBrowser && window.Vue) {
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(14);
-module.exports = __webpack_require__(55);
+module.exports = __webpack_require__(58);
 
 
 /***/ }),
@@ -16617,7 +16617,7 @@ module.exports = __webpack_require__(55);
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_router__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__routes__ = __webpack_require__(41);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_fastclick__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_fastclick__ = __webpack_require__(54);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_fastclick___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_fastclick__);
 __webpack_require__(15);
 window.Vue = __webpack_require__(38);
@@ -16626,7 +16626,7 @@ window.Vue = __webpack_require__(38);
 
 
 Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]);
-Vue.component('tabbar', __webpack_require__(52));
+Vue.component('tabbar', __webpack_require__(55));
 __WEBPACK_IMPORTED_MODULE_2_fastclick___default.a.attach(document.body);
 
 var app = new Vue({
@@ -49617,16 +49617,15 @@ module.exports = Vue;
 /* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(global) {var scope = this;
-var apply = Function.prototype.apply;
+/* WEBPACK VAR INJECTION */(function(global) {var apply = Function.prototype.apply;
 
 // DOM APIs, for completeness
 
 exports.setTimeout = function() {
-  return new Timeout(apply.call(setTimeout, scope, arguments), clearTimeout);
+  return new Timeout(apply.call(setTimeout, window, arguments), clearTimeout);
 };
 exports.setInterval = function() {
-  return new Timeout(apply.call(setInterval, scope, arguments), clearInterval);
+  return new Timeout(apply.call(setInterval, window, arguments), clearInterval);
 };
 exports.clearTimeout =
 exports.clearInterval = function(timeout) {
@@ -49641,7 +49640,7 @@ function Timeout(id, clearFn) {
 }
 Timeout.prototype.unref = Timeout.prototype.ref = function() {};
 Timeout.prototype.close = function() {
-  this._clearFn.call(scope, this._id);
+  this._clearFn.call(window, this._id);
 };
 
 // Does not start the time, just sets up the members needed.
@@ -49894,6 +49893,12 @@ var routes = [{
     path: '/weixin/punchcard',
     name: 'punchcard',
     component: __webpack_require__(48)
+},
+//文章列表路由
+{
+    path: ' /weixin/home/tags/:id',
+    name: 'trainingList',
+    component: __webpack_require__(51)
 }];
 
 /* harmony default export */ __webpack_exports__["a"] = (new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
@@ -49967,11 +49972,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            items: [{ title: '666', icon: 'test.png' }, { title: '666', icon: 'test.png' }, { title: '666', icon: 'test.png' }, { title: '666', icon: 'test.png' }, { title: '666', icon: 'test.png' }, { title: '666', icon: 'test.png' }, { title: '666', icon: 'test.png' }, { title: '666', icon: 'test.png' }, { title: '666', icon: 'test.png' }, { title: '666', icon: 'test.png' }, { title: '666', icon: 'test.png' }, { title: '666', icon: 'test.png' }, { title: '666', icon: 'test.png' }, { title: '666', icon: 'test.png' }, { title: '666', icon: 'test.png' }]
+            items: [{ title: '666', icon: 'test.png' }, { title: '666', icon: 'test.png', tagid: '1' }, { title: '666', icon: 'test.png', tagid: '2' }, { title: '666', icon: 'test.png', tagid: '3' }, { title: '666', icon: 'test.png', tagid: '4' }, { title: '666', icon: 'test.png', tagid: '5' }, { title: '666', icon: 'test.png', tagid: '6' }, { title: '666', icon: 'test.png', tagid: '7' }, { title: '666', icon: 'test.png', tagid: '8' }, { title: '666', icon: 'test.png', tagid: '9' }, { title: '666', icon: 'test.png', tagid: '10' }, { title: '666', icon: 'test.png', tagid: '11' }, { title: '666', icon: 'test.png', tagid: '12' }, { title: '666', icon: 'test.png', tagid: '13' }, { title: '666', icon: 'test.png', tagid: '14' }, { title: '666', icon: 'test.png', tagid: '15' }, { title: '666', icon: 'test.png', tagid: '16' }, { title: '666', icon: 'test.png', tagid: '17' }, { title: '666', icon: 'test.png', tagid: '18' }]
         };
     }
 });
@@ -49988,26 +49995,27 @@ var render = function() {
     "div",
     { staticClass: "weui-grids" },
     _vm._l(_vm.items, function(item) {
-      return _c("a", { staticClass: "weui-grid" }, [
-        _vm._m(0, true),
-        _vm._v(" "),
-        _c("p", { staticClass: "weui-grid__label" }, [
-          _vm._v("\n            厂部培训\n        ")
-        ])
-      ])
+      return _c(
+        "router-link",
+        {
+          key: item.tagid,
+          staticClass: "weui-grid",
+          attrs: { to: { name: "trainingList", params: { id: item.tagid } } }
+        },
+        [
+          _c("div", { staticClass: "weui-grid__icon" }, [
+            _c("img", { attrs: { src: "/icon/training.png" } })
+          ]),
+          _vm._v(" "),
+          _c("p", { staticClass: "weui-grid__label" }, [
+            _vm._v("\n            厂部培训\n        ")
+          ])
+        ]
+      )
     })
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "weui-grid__icon" }, [
-      _c("img", { attrs: { src: "/icon/training.png" } })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -50179,6 +50187,210 @@ if (false) {
 
 /***/ }),
 /* 51 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(2)
+/* script */
+var __vue_script__ = __webpack_require__(52)
+/* template */
+var __vue_template__ = __webpack_require__(53)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/training/List.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-17938a68", Component.options)
+  } else {
+    hotAPI.reload("data-v-17938a68", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 52 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({});
+
+/***/ }),
+/* 53 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "weui-panel weui-panel_access" }, [
+      _c("div", { staticClass: "weui-panel__hd" }, [_vm._v("厂部培训")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "weui-panel__bd" }, [
+        _c(
+          "a",
+          {
+            staticClass: "weui-media-box weui-media-box_appmsg",
+            attrs: { href: "javascript:void(0);" }
+          },
+          [
+            _c("div", { staticClass: "weui-media-box__hd" }, [
+              _c("img", {
+                staticClass: "weui-media-box__thumb",
+                attrs: { src: "" }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "weui-media-box__bd" }, [
+              _c("h4", { staticClass: "weui-media-box__title" }, [
+                _vm._v("标题一")
+              ]),
+              _vm._v(" "),
+              _c("p", { staticClass: "weui-media-box__desc" }, [
+                _vm._v(
+                  "由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"
+                )
+              ])
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "weui-media-box weui-media-box_text" }, [
+          _c("h4", { staticClass: "weui-media-box__title" }, [
+            _vm._v("标题一")
+          ]),
+          _vm._v(" "),
+          _c("p", { staticClass: "weui-media-box__desc" }, [
+            _vm._v(
+              "由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "weui-media-box weui-media-box_text" }, [
+          _c("h4", { staticClass: "weui-media-box__title" }, [
+            _vm._v("标题一")
+          ]),
+          _vm._v(" "),
+          _c("p", { staticClass: "weui-media-box__desc" }, [
+            _vm._v(
+              "由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            staticClass: "weui-media-box weui-media-box_appmsg",
+            attrs: { href: "javascript:void(0);" }
+          },
+          [
+            _c("div", { staticClass: "weui-media-box__bd" }, [
+              _c("h4", { staticClass: "weui-media-box__title" }, [
+                _vm._v("标题二")
+              ]),
+              _vm._v(" "),
+              _c("p", { staticClass: "weui-media-box__desc" }, [
+                _vm._v(
+                  "由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。"
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "weui-media-box__hd" }, [
+              _c("img", {
+                staticClass: "weui-media-box__thumb",
+                attrs: { src: "" }
+              })
+            ])
+          ]
+        )
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-17938a68", module.exports)
+  }
+}
+
+/***/ }),
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_RESULT__;;(function () {
@@ -51026,15 +51238,15 @@ var __WEBPACK_AMD_DEFINE_RESULT__;;(function () {
 
 
 /***/ }),
-/* 52 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(2)
 /* script */
-var __vue_script__ = __webpack_require__(53)
+var __vue_script__ = __webpack_require__(56)
 /* template */
-var __vue_template__ = __webpack_require__(54)
+var __vue_template__ = __webpack_require__(57)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -51073,7 +51285,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 53 */
+/* 56 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -51108,7 +51320,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
-/* 54 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -51190,7 +51402,7 @@ if (false) {
 }
 
 /***/ }),
-/* 55 */
+/* 58 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

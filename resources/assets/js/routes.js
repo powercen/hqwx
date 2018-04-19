@@ -19,7 +19,7 @@ let routes = [
     //文章列表路由
     {
         path:' /weixin/home/tags/:id',
-        name: 'training.list',
+        name: 'trainingList',
         component:require('./components/training/List')
     }
 

@@ -23,6 +23,9 @@ a {
   .weui-tab {
     position: static;
     height: auto;
+    .weui-tabbar {
+      position: fixed;
+    }
   }
 }
 

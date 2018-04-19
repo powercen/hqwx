@@ -15,6 +15,12 @@ let routes = [
         path:'/weixin/punchcard',
         name: 'punchcard',
         component:require('./components/punchcard/Index')
+    },
+    //文章列表路由
+    {
+        path:' /weixin/home/tags/:id',
+        name: 'training.list',
+        component:require('./components/training/List')
     }
 
 ];

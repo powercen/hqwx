@@ -18,9 +18,15 @@ let routes = [
     },
     //文章列表路由
     {
-        path:' /weixin/home/tags/:id',
+        path: '/weixin/home/:tag/:icon/:id',
         name: 'trainingList',
-        component:require('./components/training/List')
+        component: require('./components/training/List')
+    },
+
+    {
+        path:'/weixin/home/posts/:tid/:id',
+        name: 'detail',
+        component:require('./components/training/Detail')
     }
 
 ];

@@ -17,14 +17,18 @@ Route::get('/', function () {
 
 Route::any('/wechat', 'WeChatController@serve');
 
+
 //登陆页面
 Route::get('login', 'LoginController@loginView')->name('login');
 Route::post('login', 'LoginController@login')->name('login');
 
-
+Route::post('posts/uploadImage', 'Admin\PostsController@uploadImage')->name('posts.uploadImage');
 Route::group(['namespace' => 'Admin', 'middleware'=>'auth'], function (){
     Route::get('dashboard', 'AdminController@dashboardView')->name('dashboard');
     Route::post('logout', 'AdminController@logout')->name('logout');
+    Route::resource('posts', 'PostsController');
+    Route::resource('tags', 'TagsController');
+
 });
 
 //微信视图

@@ -21,11 +21,11 @@ class WeChatController extends Controller
                     if($message['Event'] == 'subscribe'){
                         return new Text('你好，欢迎来到华庆作业区');
                     }
-                    return 'Success';
+                    return 'success';
                 case 'text':
-                    return new Text('入口路由为：' . route('pages.training', 'home'));
+                    return new Text('你刚才输入了 ' . $message['Content']);
                 default:
-                    return 'Success';
+                    return 'success';
             }
 
         });

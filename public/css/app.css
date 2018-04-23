@@ -10444,3 +10444,122 @@ a:hover {
   color: #007bff;
 }
 
+.mui-bar-tab .hqwx-tab-item {
+  display: table-cell;
+  overflow: hidden;
+  width: 1%;
+  height: 50px;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.mui-bar-tab .hqwx-tab-item .mui-icon {
+  top: 3px;
+  width: 24px;
+  height: 24px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.mui-bar-tab .hqwx-tab-item .mui-icon ~ .mui-tab-label {
+  font-size: 11px;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mui-tab-label,
+.mui-icon {
+  color: #1b1e21;
+}
+
+.router-link-active .mui-tab-label,
+.router-link-active .mui-icon {
+  color: #0023ff;
+}
+
+.text-lighter {
+  color: #aeb9c4;
+}
+
+.mui-content {
+  background-color: transparent;
+}
+
+.mui-content .title {
+  line-height: 2rem;
+  padding-left: 10px;
+  margin-bottom: 0;
+}
+
+.mui-content .mui-table-view-cell .subtitle {
+  font-weight: 600;
+  color: #5a6268;
+}
+
+.detail-content p {
+  margin-bottom: 5px !important;
+}
+
+.detail-content .nav-item {
+  font-size: 15px;
+}
+
+.iconfont.f16 {
+  font-size: 16px;
+}
+
+.iconfont.f18 {
+  font-size: 18px;
+}
+
+.iconfont.f20 {
+  font-size: 20px;
+}
+
+.iconfont.f26 {
+  font-size: 26px;
+}
+
+.iconfont.f28 {
+  font-size: 28px;
+}
+
+.iconfont.f36 {
+  font-size: 36px;
+}
+
+th.id {
+  font-size: 15px;
+  width: 20px;
+}
+
+th.updated {
+  font-size: 15px;
+  width: 100px;
+}
+
+th.manage {
+  font-size: 15px;
+  width: 100px;
+}
+
+.table td {
+  font-size: 14px;
+}
+
+.table th,
+.table td {
+  padding: 0.2rem;
+  vertical-align: middle;
+}
+
+.table .btn-sm,
+.table .btn-group-sm > .btn,
+.table .btn-group-sm > .btn {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
